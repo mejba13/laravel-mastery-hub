@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Example alert classes */
+.alert {
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    background-color: #38a169;
+}
+
+.alert-error {
+    background-color: #e53e3e;
+}
+
+.alert-warning {
+    background-color: #dd6b20;
+}
+
+.alert-info {
+    background-color: #3182ce;
+}

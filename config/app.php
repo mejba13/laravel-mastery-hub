@@ -103,6 +103,9 @@ return [
         ...array_filter(
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
+
+        // ...
+        Livewire\LivewireServiceProvider::class,
     ],
 
     /*
