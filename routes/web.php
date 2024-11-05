@@ -8,6 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test-role', function () {
+    return 'Testing role middleware';
+})->middleware('role:admin');
+
+
 // Route for admin dashboard, only accessible by users with 'admin' role
 Route::get('/admin', function () {
     return view('admin.dashboard');

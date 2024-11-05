@@ -10,22 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckUserRole
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string  $role
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next, $role)
     {
-        // Check if the user is authenticated and has the correct role
-        if (!Auth::check() || Auth::user()->role !== $role) {
-            return redirect('/')->with('error', 'Access denied.');
+        // Ensure user is authenticated
+        if (!Auth::check()) {
+            return redirect('/login'); // Redirect if not logged in
         }
 
-        // Allow the request to proceed
+        // Check if user has the required role
+        if (Auth::user()->role !== $role) {
+            return redirect('/dashboard')->with('error', 'Access denied.');
+        }
+
         return $next($request);
     }
 }

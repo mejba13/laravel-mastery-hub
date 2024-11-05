@@ -1,8 +1,7 @@
 <?php
-
 // app/Http/Kernel.php
 
 protected $routeMiddleware = [
-    // Other middlewares...
-    'role' => \App\Http\Middleware\CheckUserRole::class,
+    // Other middleware...
+    'role' => \App\Http\Middleware\CheckUserRole::class, // Ensure no extra space here
 ];
