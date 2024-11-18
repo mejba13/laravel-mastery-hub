@@ -32,22 +32,30 @@ class DatabaseSeeder extends Seeder
 //        ]);
 //    }
 
+//    public function run()
+//    {
+//        // Create an admin user
+//        User::factory()->create([
+//            'name' => 'Admin User',
+//            'email' => 'admin@example.com',
+//            'role' => 'admin',
+//            'password' => bcrypt('password'), // Set a default password
+//        ]);
+//
+//        // Create a regular user
+//        User::factory()->create([
+//            'name' => 'Regular User',
+//            'email' => 'user@example.com',
+//            'role' => 'user',
+//            'password' => bcrypt('password'), // Set a default password
+//        ]);
+//    }
+
     public function run()
     {
-        // Create an admin user
-        User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'role' => 'admin',
-            'password' => bcrypt('password'), // Set a default password
-        ]);
-
-        // Create a regular user
-        User::factory()->create([
-            'name' => 'Regular User',
-            'email' => 'user@example.com',
-            'role' => 'user',
-            'password' => bcrypt('password'), // Set a default password
+        // Add individual seeders here
+        $this->call([
+            OrderSeeder::class, // Call OrderSeeder
         ]);
     }
 }
