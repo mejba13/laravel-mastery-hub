@@ -1,7 +1,45 @@
 <?php
-// app/Http/Kernel.php
 
-protected $routeMiddleware = [
-    // Other middleware...
-    'role' => \App\Http\Middleware\CheckUserRole::class, // Ensure no extra space here
-];
+namespace App\Console;
+
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+
+class Kernel extends ConsoleKernel
+{
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        \App\Console\Commands\ExampleTask::class, // Register your custom command
+    ];
+
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        // Schedule the custom command to run every minute
+        $schedule->command('example:task')->everyMinute();
+
+        // Add a log entry to verify the scheduler runs
+        \Log::info('Scheduler invoked at ' . now());
+    }
+
+    /**
+     * Register the commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        $this->load(__DIR__ . '/Commands');
+
+        require base_path('routes/console.php');
+    }
+}
