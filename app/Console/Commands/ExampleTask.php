@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class ExampleTask extends Command
 {
@@ -22,7 +23,7 @@ class ExampleTask extends Command
     public function handle()
     {
         // Log the task execution for debugging
-        \Log::info('Example Task Executed Successfully at ' . now());
+        Log::info('Example Task Executed Successfully at ' . now());
 
         // Output a message to the console (for testing purposes)
         $this->info('Example Task Executed Successfully');

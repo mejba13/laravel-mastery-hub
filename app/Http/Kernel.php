@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ExampleTask;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,8 +13,9 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
+
     protected $commands = [
-        \App\Console\Commands\ExampleTask::class, // Register your custom command
+        ExampleTask::class, // Register your custom command
     ];
 
     /**
@@ -24,11 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Schedule the custom command to run every minute
         $schedule->command('example:task')->everyMinute();
-
-        // Add a log entry to verify the scheduler runs
-        \Log::info('Scheduler invoked at ' . now());
     }
 
     /**
